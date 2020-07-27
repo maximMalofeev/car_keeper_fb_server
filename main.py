@@ -1,3 +1,4 @@
+import os
 import firebase_admin
 import datetime
 import time
@@ -50,8 +51,7 @@ def on_snapshot(collection_snapshot, changes, read_time):
 
 if __name__ == "__main__":
     try:
-        cred = credentials.Certificate(
-            "carkeeperapp-firebase-adminsdk-or4a5-97ce42a4da.json")
+        cred = credentials.Certificate(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
         app = firebase_admin.initialize_app(cred)
         
         print(app.name)
